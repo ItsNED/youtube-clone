@@ -1,4 +1,6 @@
 import express from "express";
+import morgan from "morgan";
+
 const app = express();
 
 const PORT = 4000;
@@ -15,12 +17,7 @@ const handleProfile = (req, res) => {
   res.send("This is your Profile");
 };
 
-const myMiddleware = (req, res, next) => {
-  console.log("Between");
-  next();
-};
-
-app.use(myMiddleware);
+app.use(morgan("dev"));
 
 app.get("/", handleHome);
 app.get("/profile", handleProfile);
