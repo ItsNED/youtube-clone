@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import helmet from "helmet";
 
 const app = express();
 
@@ -17,6 +18,7 @@ const handleProfile = (req, res) => {
   res.send("This is your Profile");
 };
 
+app.use(helmet());
 app.use(morgan("dev"));
 
 app.get("/", handleHome);
